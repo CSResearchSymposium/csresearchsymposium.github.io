@@ -5,7 +5,7 @@
 		<title>CS Research Symposium - Spring 2022</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="img/favicon.ico">
+        <link rel="icon" type="favicon.ico" href="favicon.ico?v=5"  />
 
 		<!-- CSS FILES -->
         <!-- <link rel="stylesheet" href="css/uikit.min.css" /> -->
@@ -17,7 +17,7 @@
         <script src="js/uikit-icons.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="js/jquery-3.5.1.min.js"></script>
-
+        <script src="js/common.js"></script>
     </head>
 
 	<body class="uk-background-muted">
@@ -27,7 +27,10 @@
             $(function(){
                 $("#nav-placeholder").load("nav.html");
             });
-            </script>
+            window.onload = function() {
+                updateNavBar("program");
+            }
+        </script>
 
         <main uk-height-viewport="expand: true">
         
@@ -36,30 +39,22 @@
             <div class="uk-container">
 
                 <!-- Header -->
-                <div class="uk-h2 uk-text-bolder uk-margin-remove-bottom">News</div>
-                <hr class="uk-divider-icon uk-margin-remove-top" />
-
                 <div class="uk-grid uk-grid-small uk-child-width-1-1" uk-grid>
-                    
                     <div>
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-header">
                                 <div class="uk-width-expand">
                                     <h3 class="uk-card-title uk-margin-remove-bottom uk-text-bold">
-                                        
-                                        <span class="fa fa-info-circle"></span>
-                                        
-                                        Office Nameplate Generator
+                                        <span uk-icon="icon: calendar; ratio: 1.5"></span>
+                                        When
                                     </h3>
                                     <p class="uk-text-meta uk-margin-small-top uk-margin-small-bottom uk-text-emphasis">
-                                        <!--<span class="fas fa-clock"></span> <br/>-->
-                                        Created at Sept. 14, 2021
-                                        
+                                        No, it's not an April Fools' joke!
                                     </p>
                                 </div>
                             </div>
                             <div class="uk-card-body">
-                                <p class="uk-text-justify"><p>Generate and print the nameplate to put outside your CS office <a href="https://sacm.cs.wisc.edu/resources/nameplate">here</a>!</p></p>
+                                <p class="uk-text-justify">April 1st, 2022 Friday</p>
                             </div>
                         </div>
                     </div>
@@ -69,22 +64,16 @@
                             <div class="uk-card-header">
                                 <div class="uk-width-expand">
                                     <h3 class="uk-card-title uk-margin-remove-bottom uk-text-bold">
-                                        
-                                        <span class="fa fa-info-circle"></span>
-                                        
-                                        PhD &amp; Postdocs Recruiting Website
+                                        <span uk-icon="icon: location; ratio: 1.5"></span>
+                                        Where
                                     </h3>
                                     <p class="uk-text-meta uk-margin-small-top uk-margin-small-bottom uk-text-emphasis">
-                                        <!--<span class="fas fa-clock"></span> <br/>-->
-                                        Created at Feb. 5, 2021
-                                        
-                                        (modified: Nov. 9, 2021)
-                                        
+                                        Wherever you are!
                                     </p>
                                 </div>
                             </div>
                             <div class="uk-card-body">
-                                <p class="uk-text-justify">The CS department has a&nbsp;<a href="https://www.cs.wisc.edu/phds-and-postdocs-on-the-job-market/">webpage</a>&nbsp;which contains information about&nbsp;<span style="font-weight: 700;">grad students</span>&nbsp;and&nbsp;<span style="font-weight: 700;">postdocs</span>&nbsp;on the job market. This can be helpful to give a&nbsp;<i>boost</i>&nbsp;to your job search. If you want your profile to be added to this listing, please&nbsp;<a href="mailto:kbarrettwilt@cs.wisc.edu">email Karen</a>&nbsp;with all the necessary information.</p>
+                                <p class="uk-text-justify">Virtual: {zoom link}</p>
                             </div>
                         </div>
                     </div>
@@ -97,11 +86,12 @@
 
         </main>
 
-		<footer class="uk-section uk-section-default uk-section-xsmall uk-background-secondary uk-light">
-			<div class="uk-container">
-				<p class="uk-text-small uk-text-center uk-text-emphasis">SACM @ UW-Madison | 2020</p>
-			</div>
+        <script>
+            $(function(){
+                $("#footer-placeholder").load("footer.html");
+            });
+        </script>
+		<footer id="footer-placeholder">
 		</footer>
-
 	</body>
 </html>

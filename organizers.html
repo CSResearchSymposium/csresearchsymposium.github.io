@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-gb" class='uk-notouch'>
+
+	<head>
+		<title>CS Research Symposium - Spring 2022</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="favicon.ico" href="favicon.ico?v=5"  />
+
+		<!-- CSS FILES -->
+        <!-- <link rel="stylesheet" href="css/uikit.min.css" /> -->
+        <link rel="stylesheet" href="css/custom.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+		<!-- JS FILES -->
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/common.js"></script>
+    </head>
+
+	<body class="uk-background-muted">
+        <div id="nav-placeholder">
+        </div>
+        <script>
+            $(function(){
+                $("#nav-placeholder").load("nav.html");
+            });
+            window.onload = function() {
+                updateNavBar("organizers");
+            }
+        </script>
+
+        <main uk-height-viewport="expand: true">
+
+            <div class="uk-section uk-section-small uk-section-muted">
+                <div class="uk-container">
+                    
+                    <div class="uk-card uk-card-default uk-card-small uk-width-1-1 uk-margin-medium-bottom"
+                        uk-scrollspy="cls:uk-animation-fade">
+                        <div class="uk-card-header">
+                            <p class="uk-card-title uk-text-center">SACM</p>
+                        </div>
+                        <div class="uk-card-body">
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-5@l uk-grid-match">
+                            
+                            <div class="uk-text-center">
+                                <div class="uk-inline-clip uk-transition-toggle uk-light uk-margin-bottom uk-margin-medium-top uk-margin-left uk-margin-right">
+                                    <img class="uk-border-circle" src="/img/organizers/joon_park.png" alt="">
+            
+                                    <div class="uk-transition-fade uk-position-cover uk-border-circle uk-overlay uk-overlay-primary uk-flex uk-flex-center uk-flex-middle uk-text-center uk-visible@m">
+                                        <div data-uk-margin class="uk-transition-slide-bottom-small">
+                                            <a href="https://hjoonpark.github.io/" uk-icon="world" class="uk-icon-button" target="_blank"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="uk-text-bold uk-text-emphasis uk-margin-remove-top">Hyojoon Park</p>
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-card uk-card-default uk-card-small uk-width-1-1 uk-margin-medium-bottom"
+                        uk-scrollspy="cls:uk-animation-fade">
+                        <div class="uk-card-header">
+                            <p class="uk-card-title uk-text-center">WACM</p>
+                        </div>
+                        <div class="uk-card-body">
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-5@l uk-grid-match">
+                            
+                            <div class="uk-text-center">
+                                <div class="uk-inline-clip uk-transition-toggle uk-light uk-margin-bottom uk-margin-medium-top uk-margin-left uk-margin-right">
+                                    <img class="uk-border-circle" src="/media/officers/photos/evangelia.jpg" alt="">
+            
+                                    <div class="uk-transition-fade uk-position-cover uk-border-circle uk-overlay uk-overlay-primary uk-flex uk-flex-center uk-flex-middle uk-text-center uk-visible@m">
+                                        <div data-uk-margin class="uk-transition-slide-bottom-small">
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="uk-text-bold uk-text-emphasis uk-margin-remove-top">Person 2</p>
+                            </div>
+                            
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            
+            </div>
+
+        </main>
+
+        <script>
+            $(function(){
+                $("#footer-placeholder").load("footer.html");
+            });
+        </script>
+		<footer id="footer-placeholder">
+		</footer>
+	</body>
+</html>
