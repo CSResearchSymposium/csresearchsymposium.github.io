@@ -1,6 +1,8 @@
 # Website for CS Research Symposium - Spring 2022
 In collaboration with SACM and WACM
 
+Website url: [csresearchsymposium.github.io](https://csresearchsymposium.github.io/)
+
 ---
 
 To use a repository for the main website, rename it to:
