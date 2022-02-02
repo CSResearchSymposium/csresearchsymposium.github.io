@@ -2,31 +2,38 @@
     <div class="uk-container uk-container-center">
         <nav class="uk-navbar-transparent" data-uk-navbar>
             <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo uk-padding-remove-left uk-padding-remove-right" href="https://sacm.cs.wisc.edu/" target="_blank">
-                    <img class="uk-padding-remove-right" src="/img/sacm_logo_inverse.jpg" style="height: 60px; max-width: 100%;">
+                <a class="uk-navbar-item uk-logo uk-padding-remove-left uk-padding-remove-right" href="/">
+                    <img class="uk-padding-remove-right" src="/img/main_logo.png" style="height: 60px; max-width: 100%;">
                 </a>
-                <a class="uk-navbar-item uk-logo uk-padding-remove-left uk-padding-remove-right" href="https://wacm.cs.wisc.edu/">
-                    <img class="uk-padding-remove-right" src="/img/wacm_logo.jpg" style="height: 60px; max-width: 100%; margin:0px 10px 0px 10px;">
-                </a>
-                <!-- <a class="uk-navbar-item uk-logo uk-text-bolder uk-text-emphasis uk-padding-remove-left uk-visible@s" href="/" style="font-size: 1.3em;">
-                    Spring '22
-                </a>  -->
+                <div style="display: flex; overflow:auto; text-align:center; flex-direction:column; height:100%; padding-top:5px;" class="uk-navbar-item" >
+                    <div>
+                        <a href="https://sacm.cs.wisc.edu/" target="_blank">
+                        <img src="/img/sacm_logo_inverse.jpg" style="height: 35px; max-width: 100%;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://wacm.cs.wisc.edu/" target="_blank">
+                        <img src="/img/wacm_logo.png" style="height: 35px; max-width: 100%;">
+                        </a>
+                    </div>
+                </div>
+                
             </div>
             <div class="uk-navbar-center uk-visible@l" style="padding-left:0px;">
-                <ul class="uk-navbar-nav" id="nav-ul">
-                    <li class="uk-text-bold" id="nav-home">
-                        <a href="/index.html">Home</a>
+                <ul class="uk-navbar-nav nav-ul">
+                    <li class="uk-text-bold nav-home">
+                        <a href="/">Home</a>
                     </li>
-                    <li class=" uk-text-bold" id="nav-program">
+                    <li class=" uk-text-bold nav-program">
                         <a href="/program.html">Program</a>
                     </li>
-                    <li class=" uk-text-bold" id="nav-submissions">
-                        <a href="/submissions.html">Submissions</a>
+                    <li class=" uk-text-bold nav-submission">
+                        <a href="/submission.html">Submission</a>
                     </li>
-                    <li class=" uk-text-bold" id="nav-surveys">
-                        <a href="/surveys.html">Surveys</a>
+                    <li class=" uk-text-bold nav-survey">
+                        <a href="/survey.html">Survey</a>
                     </li>
-                    <li class=" uk-text-bold" id="nav-organizers">
+                    <li class=" uk-text-bold nav-organizers">
                         <a href="/organizers.html">Organizers</a>
                     </li>
                 </ul>
@@ -46,21 +53,21 @@
 <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
     <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
         <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
-        <ul class="uk-nav uk-nav-default">
+        <ul class="uk-nav uk-nav-default nav-ul">
             <!--<li class="uk-nav-header">Header</li>-->
-            <li class=" uk-active  uk-text-bold">
-                <a href="/index.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: home"></span>Home</a>
+            <li class=" uk-active  uk-text-bold nav-home">
+                <a href="/"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: home"></span>Home</a>
             </li>
-            <li class=" uk-text-bold">
+            <li class=" uk-text-bold nav-program">
                 <a href="/program.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: info"></span>Program</a>
             </li>
-            <li class=" uk-text-bold">
-                <a href="/submissions.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: folder"></span>Submissions</a>
+            <li class=" uk-text-bold nav-submission">
+                <a href="/submission.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: folder"></span>Submission</a>
             </li>
-            <li class=" uk-text-bold">
-                <a href="/surveys.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: file-edit"></span>Surveys</a>
+            <li class=" uk-text-bold nav-survey">
+                <a href="/survey.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: file-edit"></span>Survey</a>
             </li>
-            <li class=" uk-text-bold">
+            <li class=" uk-text-bold nav-organizers">
                 <a href="/organizers.html"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: users"></span>Organizers</a>
             </li>
         </ul>

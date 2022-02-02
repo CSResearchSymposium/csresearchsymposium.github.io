@@ -1,9 +1,14 @@
 function updateNavBar(currentNav) {
-    let lis = document.getElementById("nav-ul").getElementsByTagName("li");
-    for (let i = 0; i < lis.length; i++) {
-        let li = lis[i];
-        li.classList.remove("uk-active");
+    let uls = document.getElementsByClassName("nav-ul")
+    for (let i =0; i < uls.length; i++) {
+        let lis = uls[i].getElementsByTagName("li");
+        for (let j = 0; j < lis.length; j++) {
+            lis[j].classList.remove("uk-active");
+        }
     }
-    let li = document.getElementById("nav-" + currentNav);
-    li.classList.add("uk-active");
+
+    let li = document.getElementsByClassName("nav-" + currentNav);
+    for (let i =0; i < li.length; i++) {
+        li[i].classList.add("uk-active");
+    }
 }
