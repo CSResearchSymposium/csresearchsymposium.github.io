@@ -55,7 +55,7 @@ function loadSubmissions() {
         // load papers
         for (let j = 0; j < papers.length; j++) {
             paper = papers[j]
-            li += '<li><a href="' + paper["paper_url"] + '">' + paper["title"] + '</a> - <a href="'+ paper["author_url"] + '">' + paper["author"] + '</a></li>';
+            li += '<li><img class="paper-thumbnail" src="img/submissions/paper_img.png"></img><a href="' + paper["paper_url"] + '">' + paper["title"] + '</a> - <a href="'+ paper["author_url"] + '">' + paper["author"] + '</a></li>';
         }
         li += "</ol></div></li>"
         lis += li;
