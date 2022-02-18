@@ -63,13 +63,51 @@ function loadSubmissions() {
     ul.innerHTML = lis;
 }
 
-function expandCollapseAll(expand) {
-    var accordionEl = UIkit.util.$('[uk-accordion]');
+function loadKeynotes() {
+    // <ul uk-accordion="multiple: true" id="submission-list">
+    //     <li class="uk-close">
+    //         <a class="uk-accordion-title uk-text-bold" href="#">
+    //             Architecture
+    //         </a>
+    //         <div class="uk-accordion-content">
+    //         <ol>
+    //             <li><a href="">Title</a> - <a href="">Author</a></li>
+    //         </ol>
+    //         </div>
+    //     </li>
+    // </ul>
+    const areas = [
+        "Talk 1",
+        "Talk 2",
+        "Talk 3",
+    ];
+    let ul = document.getElementById("keynote-list")
+    let lis = '';
+    for (let i = 0; i < areas.length; i++) {
+        let papers = [{"title": "Keynote title", "author": "Presenter", "paper_url": '', "author_url": ''}]
+
+        let li = '<li class="uk-close">';
+        li += '<a class="uk-accordion-title uk-text-bold" href="#">' + areas[i] + '</a>';
+        li += '<div class="uk-accordion-content collapsable-list">';
+        li += '<ol>'
+
+        // load papers
+        for (let j = 0; j < papers.length; j++) {
+            paper = papers[j]
+            li += '<li><img class="paper-thumbnail" src="img/submissions/paper_img.png"></img><a href="' + paper["paper_url"] + '">' + paper["title"] + '</a> - <a href="'+ paper["author_url"] + '">' + paper["author"] + '</a></li>';
+        }
+        li += "</ol></div></li>"
+        lis += li;
+    }
+    ul.innerHTML = lis;
+}
+function expandCollapseAll(id, expand) {
+    var accordionEl = UIkit.util.$('[uk-accordion]#'+id);
     var liItems;
     if (expand) {
-        liItems = UIkit.util.$$('[uk-accordion] > li:not(.uk-open)');
+        liItems = UIkit.util.$$('[uk-accordion]#'+id + ' > li:not(.uk-open)');
     } else {
-        liItems = UIkit.util.$$('[uk-accordion] > li.uk-open');
+        liItems = UIkit.util.$$('[uk-accordion]#'+id + ' > li.uk-open');
     }
 
     UIkit.util.each(liItems, function(el) {

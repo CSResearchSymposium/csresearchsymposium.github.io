@@ -30,6 +30,7 @@
             window.onload = function() {
                 updateNavBar("submission");
                 loadSubmissions();
+                loadKeynotes();
             }
         </script>
 
@@ -37,36 +38,53 @@
         
         <section class="uk-section uk-section-muted">
             <div class="uk-container">
-            <div class="uk-card uk-card-default uk-card-small">
-                <div class="uk-card-header uk-text-center">
-                    <p class="uk-card-title"><span uk-icon="icon: file-edit; ratio: 1.2;"></span> Call for Papers</p>
-                </div>
-                <div class="uk-card-body">
-                    <p>
-                    Register <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbkGusGNnTDD4WqKQ92O4p1Uc1hH0tZcDIHZAZP09VMSKMhg/viewform" target="_blank">here</a>.
-                    <br>
-                    Deadline <b>Friday, February 21, 2022</b>
-                </div>
-            </div>
-            <br>
-            <div class="uk-card uk-card-default uk-card-small">
-                <div class="uk-card-header">
-                    <div style="display: inline-block; width:100%;">
-                        <p class="uk-text-large"><span uk-icon="icon: database; ratio: 1.2;"></span> Papers
-                            <button class="uk-button uk-button-default uk-button-small" style="display: inline-block; float: right; margin-left: 5px;" onclick="expandCollapseAll(false)"><span uk-icon="icon: arrow-up"></span>Collapse all</button>
-                            <button class="uk-button uk-button-default uk-button-small" style="display: inline-block; float: right; margin-left: 5px;" onclick="expandCollapseAll(true)"><span uk-icon="icon: arrow-down"></span> Expand all</button>
-                        </p>
+                <div class="uk-card uk-card-default uk-card-small">
+                    <div class="uk-card-header uk-text-center">
+                        <p class="uk-card-title"><span uk-icon="icon: file-edit; ratio: 1.2;"></span> Call for Papers</p>
                     </div>
-                    Let the light shine upon your work <span uk-icon="icon: happy"></span>
+                    <div class="uk-card-body">
+                        <p>
+                        Register <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbkGusGNnTDD4WqKQ92O4p1Uc1hH0tZcDIHZAZP09VMSKMhg/viewform" target="_blank">here</a>.
+                        <br>
+                        Deadline <b>Friday, February 21, 2022</b>
+                        <p>Thanks to the active participation, we will not have an extended deadline.</p> 
+                    </div>
                 </div>
-                <div class="uk-card-body">
-                    <ul uk-accordion="multiple: true" id="submission-list">
-                        
-                    </ul>
+                <br>
+                <div class="uk-card uk-card-default uk-card-small">
+                    <div class="uk-card-header">
+                        <div style="display: inline-block; width:100%;">
+                            <p class="uk-text-large"><span uk-icon="icon: microphone; ratio: 1.2;"></span> Faculty Keynote Talks
+                                <button class="uk-button uk-button-default uk-button-small" style="display: inline-block; float: right; margin-left: 5px;" onclick="expandCollapseAll('keynote-list', false)"><span uk-icon="icon: arrow-up"></span>Collapse all</button>
+                                <button class="uk-button uk-button-default uk-button-small" style="display: inline-block; float: right; margin-left: 5px;" onclick="expandCollapseAll('keynote-list', true)"><span uk-icon="icon: arrow-down"></span> Expand all</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <ul uk-accordion="multiple: true" id="keynote-list">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="uk-card uk-card-default uk-card-small">
+                    <div class="uk-card-header">
+                        <div style="display: inline-block; width:100%;">
+                            <p class="uk-text-large"><span uk-icon="icon: database; ratio: 1.2;"></span> Papers
+                                <button class="uk-button uk-button-default uk-button-small" style="display: inline-block; float: right; margin-left: 5px;" onclick="expandCollapseAll('submission-list', false)"><span uk-icon="icon: arrow-up"></span>Collapse all</button>
+                                <button class="uk-button uk-button-default uk-button-small" style="display: inline-block; float: right; margin-left: 5px;" onclick="expandCollapseAll('submission-list', true)"><span uk-icon="icon: arrow-down"></span> Expand all</button>
+                            </p>
+                        </div>
+                        Let the light shine upon your work <span uk-icon="icon: happy"></span>
+                    </div>
+                    <div class="uk-card-body">
+                        <ul uk-accordion="multiple: true" id="submission-list">
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-</section>
+        </section>
 
         </main>
 
