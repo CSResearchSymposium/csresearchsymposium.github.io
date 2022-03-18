@@ -64,7 +64,7 @@ a:hover,
   cursor: pointer;
 }
 .paper-thumbnail:hover {
-  transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 /* Text-level semantics
@@ -2554,7 +2554,9 @@ select.uk-form-width-xsmall {
   padding-left: 15px;
   padding-right: 15px;
 }
-
+.uk-section, .uk-section-muted {
+  padding-top: 20px;
+}
 /* Phone landscape and bigger */
 @media (min-width: 640px) {
   .uk-container {
