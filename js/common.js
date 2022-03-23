@@ -144,8 +144,8 @@ function parseSubmissions(filePath, keynote_id, paper_id){
                 }
                 const speaker = v[4];
                 let type = v[5];
-                const title = v[7].replace(/['"]+/g, '');
-                const area = v[6].replace(/['"]+/g, '');
+                const title = v[7].replace(/["]+/g, '');
+                const area = v[6].replace(/["]+/g, '');
                 if (type.includes('Keynote')) {
                     type = 'Keynote';
                 }
