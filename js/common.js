@@ -66,7 +66,7 @@ function loadSubmissions() {
     // ul.innerHTML = lis;
 
     // dynamically load submissions from .csv file exported from google sheet
-    in_path = './data/3.tsv'
+    in_path = './data/timetable.tsv'
     file = parseSubmissions(in_path);
 }
 
