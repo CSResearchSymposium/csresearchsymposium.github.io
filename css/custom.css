@@ -66,7 +66,15 @@ a:hover,
 .paper-thumbnail:hover {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-
+.prize-thumbnail {
+  margin-right:10px;
+  transition: transform .2s; /* Animation */
+  height: 72px;
+  cursor: pointer;
+}
+.prize-thumbnail:hover {
+  transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
 /* Text-level semantics
  ========================================================================== */
 /*

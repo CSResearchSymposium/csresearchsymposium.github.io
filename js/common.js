@@ -172,7 +172,7 @@ function populateKeynotes() {
         const paper = gKeynoteList[idx];
     
         liKeynote += '<li style="margin-bottom:5px; padding-bottom:5px; min-height:96px; border-bottom:1px solid lightgray;"><p style="width:100%;">\
-                <img class="paper-thumbnail" src="img/submissions/paper_img.png" style="float:left;"></img>\
+                <img class="paper-thumbnail" src="img/BuckyBadger.jpg" style="float:left;"></img>\
                 <a href="' + paper["paper_url"] + '"><span style="font-size:1.25em">' + paper["title"] + '</span></a>\
                 <br><a href="'+ paper["speaker_url"] + '">' + paper["speaker"] + '</a></li>';
     }
@@ -218,7 +218,7 @@ function populatePapers(btn, sortKey) {
         }
     
         liPaper += '<li style="margin-bottom:5px; padding-bottom:5px; min-height:96px; border-bottom:1px solid lightgray;"><p style="width:100%;">\
-            <img class="paper-thumbnail" src="img/submissions/paper_img.png" style="float:left;"></img>\
+            <img class="paper-thumbnail" src="img/BuckyBadger.jpg" style="float:left;"></img>\
             <a href="' + paper["paper_url"] + '"><span style="font-size:1.25em">' + paper["title"] + '</span></a>\
             <br><a href="'+ paper["speaker_url"] + '">' + paper["speaker"] + '</a>\
             <br><span>'+areaTag.join(' ')+'</span></p></li>';
