@@ -17,96 +17,12 @@ function updateNavBar(currentNav) {
 var gPaperList = [];
 var gKeynoteList = [];
 function loadSubmissions() {
-    // <ul uk-accordion="multiple: true" id="submission-list">
-    //     <li class="uk-close">
-    //         <a class="uk-accordion-title uk-text-bold" href="#">
-    //             Architecture
-    //         </a>
-    //         <div class="uk-accordion-content">
-    //         <ol>
-    //             <li><a href="">Title</a> - <a href="">Author</a></li>
-    //         </ol>
-    //         </div>
-    //     </li>
-    // </ul>
-    // const areas = [
-    //     "Architecture", 
-    //     "Data Science", 
-    //     "Database", 
-    //     "Graphics", 
-    //     "HCI", 
-    //     "ML/AI", 
-    //     "Networks",
-    //     "Numerical Analysis",
-    //     "Optimization",
-    //     "Programming Languages",
-    //     "Robotics",
-    //     "Security",
-    //     "Systems",
-    //     "Theory",
-    //     "Other"];
-    // let ul = document.getElementById("submission-list")
-    // let lis = '';
-    // for (let i = 0; i < areas.length; i++) {
-    //     let papers = [{"title": "Your Paper Title", "author": "Your Name", "paper_url": '', "author_url": ''}]
-
-    //     let li = '<li class="uk-close">';
-    //     li += '<a class="uk-accordion-title uk-text-bold" href="#">' + areas[i] + ' (' + papers.length + ')</a>';
-    //     li += '<div class="uk-accordion-content collapsable-list">';
-    //     li += '<ol>'
-
-    //     // load papers
-    //     for (let j = 0; j < papers.length; j++) {
-    //         paper = papers[j]
-    //         li += '<li><img class="paper-thumbnail" src="img/submissions/paper_img.png"></img><a href="' + paper["paper_url"] + '">' + paper["title"] + '</a> - <a href="'+ paper["author_url"] + '">' + paper["author"] + '</a></li>';
-    //     }
-    //     li += "</ol></div></li>"
-    //     lis += li;
-    // }
-    // ul.innerHTML = lis;
-
     // dynamically load submissions from .csv file exported from google sheet
-    in_path = './data/timetable.tsv'
-    file = parseSubmissions(in_path);
+    parseTimetable('./data/timetable.tsv'); // loads to global variables: gPaperList, gKeynoteList
+
+    // to be added after final submissions
 }
 
-// function loadKeynotes() {
-//     // <ul uk-accordion="multiple: true" id="submission-list">
-//     //     <li class="uk-close">
-//     //         <a class="uk-accordion-title uk-text-bold" href="#">
-//     //             Architecture
-//     //         </a>
-//     //         <div class="uk-accordion-content">
-//     //         <ol>
-//     //             <li><a href="">Title</a> - <a href="">Author</a></li>
-//     //         </ol>
-//     //         </div>
-//     //     </li>
-//     // </ul>
-//     const areas = [
-//         "Talk 1",
-//         "Talk 2",
-//     ];
-//     let ul = document.getElementById("keynote-list")
-//     let lis = '';
-//     for (let i = 0; i < areas.length; i++) {
-//         let papers = [{"title": "Keynote title", "author": "Presenter", "paper_url": '', "author_url": ''}]
-
-//         let li = '<li class="uk-close">';
-//         li += '<a class="uk-accordion-title uk-text-bold" href="#">' + areas[i] + '</a>';
-//         li += '<div class="uk-accordion-content collapsable-list">';
-//         li += '<ol>'
-
-//         // load papers
-//         for (let j = 0; j < papers.length; j++) {
-//             paper = papers[j]
-//             li += '<li><img class="paper-thumbnail" src="img/submissions/paper_img.png"></img><a href="' + paper["paper_url"] + '">' + paper["title"] + '</a> - <a href="'+ paper["author_url"] + '">' + paper["author"] + '</a></li>';
-//         }
-//         li += "</ol></div></li>"
-//         lis += li;
-//     }
-//     ul.innerHTML = lis;
-// }
 function expandCollapseAll(id, expand) {
     var accordionEl = UIkit.util.$('[uk-accordion]#'+id);
     var liItems;
@@ -123,7 +39,7 @@ function expandCollapseAll(id, expand) {
     
 }
 
-function parseSubmissions(filePath, keynote_id, paper_id){
+function parseTimetable(filePath){
     /*
     1. download timetable from google sheet (https://docs.google.com/spreadsheets/d/1a8Sp2GasjQqyspXNq0E34wF0ssBVWN8uBfzoJn2O5Ww/edit?usp=sharing)
         to ./data as .tsv
@@ -216,12 +132,15 @@ function populatePapers(btn, sortKey) {
         for (var i = 0; i < areas.length; i++) {
             areaTag.push('#' + areas[i].trim());
         }
-    
+        
+        const img_filename = paper['speaker'].replaceAll(' ', '_');
+        let img_path = "/img/submissions/" + img_filename + ".png";
         liPaper += '<li style="margin-bottom:5px; padding-bottom:5px; min-height:96px; border-bottom:1px solid lightgray;"><p style="width:100%;">\
-            <img class="paper-thumbnail" src="img/BuckyBadger.jpg" style="float:left;"></img>\
+            <img class="paper-thumbnail" src="'+img_path+'" style="float:left;" onerror="this.src=&#39;img/BuckyBadger.jpg&#39;;"></img>\
             <a href="' + paper["paper_url"] + '"><span style="font-size:1.25em">' + paper["title"] + '</span></a>\
             <br><a href="'+ paper["speaker_url"] + '">' + paper["speaker"] + '</a>\
             <br><span>'+areaTag.join(' ')+'</span></p></li>';
     }
+
     ulPaper.innerHTML = liPaper;
 }
