@@ -57,14 +57,55 @@ a:hover,
 }
 
 /* Image in submssions */
+ol {
+  text-align: left;
+  list-style-position:outside;
+  vertical-align:middle;
+}
+.paper-li {
+  margin-bottom:5px; 
+  padding-bottom:5px; 
+  min-height:96px; 
+  border-bottom:1px solid lightgray;
+  line-height: 1.5em;
+}
+li span{
+  display: inline-table;
+  font-size: 14px;
+  vertical-align: top;
+}
 .paper-thumbnail {
   margin-right:10px;
   transition: transform .2s; /* Animation */
-  width: 96px;
+  max-width: 96px;
+  max-height: 96px;
+  width: auto;
+  height: auto;
   cursor: pointer;
+  float: left;
+  border: 1px solid lightgray;
 }
 .paper-thumbnail:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.paper-left {
+  flex:1;
+  margin-right: 10px;
+  min-height: 96px;
+  height: 100%;
+  width: 96px;
+}
+.paper-right {
+  height: 100%;
+  width: 100%;
+}
+.paper-container {
+  display:flex;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.speaker {
+  font-weight: bold;
 }
 .prize-thumbnail {
   margin-right:10px;
@@ -75,6 +116,7 @@ a:hover,
 .prize-thumbnail:hover {
   transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
 /* Text-level semantics
  ========================================================================== */
 /*

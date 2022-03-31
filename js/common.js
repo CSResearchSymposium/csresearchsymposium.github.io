@@ -18,7 +18,7 @@ var gPaperList = [];
 var gKeynoteList = [];
 function loadSubmissions() {
     // dynamically load submissions from .csv file exported from google sheet
-    parseTimetable('./data/timetable.tsv'); // loads to global variables: gPaperList, gKeynoteList
+    parseSubmissions(); // loads to global variables: gPaperList, gKeynoteList
 
     // to be added after final submissions
 }
@@ -39,61 +39,62 @@ function expandCollapseAll(id, expand) {
     
 }
 
-function parseTimetable(filePath){
+function parseSubmissions(){
     /*
-    1. download timetable from google sheet (https://docs.google.com/spreadsheets/d/1a8Sp2GasjQqyspXNq0E34wF0ssBVWN8uBfzoJn2O5Ww/edit?usp=sharing)
-        to ./data as .tsv
+    1. download timetable from google sheet (https://docs.google.com/spreadsheets/d/1f4a1po1Zi3kZsJsoMljCZIOvRO6trsoNp8NN-W9EWV4/edit?usp=sharing)
+        to ./data/submissions as submissions.tsv
     2. read in .tsv file as a string
     3. parse manually
     4. populate inner HTML accordingly (manual coding)
     */
+    const filePath = './data/submissions/submissions.tsv';
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             const fullText = this.responseText;
             const str = fullText.split('\n');
-            for(let i = 4; i < str.length; i++) {
+            for(let i = 2; i < str.length; i++) {
                 const v = str[i].split('\t');
-                // skip non-presentation rows
-                if (v[4] == '' || v[4] == '-') {
-                    continue;
+
+                const speaker = v[2].trim();
+                const title = v[11].replace(/["]+/g, '');
+                const area = v[13].replace(/["]+/g, '');
+                const areas = area.split(',');
+                var areaTag = [];
+                for (var j = 0; j < areas.length; j++) {
+                    areaTag.push('#' + areas[j].trim());
                 }
-                const speaker = v[4];
-                let type = v[5];
-                const title = v[7].replace(/["]+/g, '');
-                const area = v[6].replace(/["]+/g, '');
-                if (type.includes('Keynote')) {
-                    type = 'Keynote';
+                areaTag = areaTag.join(' ');
+                
+                const shareSlides = v[9] == "Yes";
+                var slideUrl = null;
+                if (shareSlides) {
+                    const fileFormat = v[17].trim();
+                    slideUrl = "data/submissions/slides/" + speaker + fileFormat;
                 }
-                // console.log(speaker + '_____' + type + '______' + area + '_____' + title);
-                if (type == 'Keynote') {
-                    gKeynoteList.push({'speaker': speaker, 'title': title, 'paper_url': '', 'speaker_url': ''});
+                const hasImage = v[14].trim() == "1";
+                var imgUrl = null;
+                if (hasImage) {
+                    const fileFormat = v[15].trim();
+                    imgUrl = "data/submissions/imgs/" + speaker + fileFormat;
                 } else {
-                    gPaperList.push({'speaker': speaker, 'type': type, 'area': area, 'title': title, 'paper_url': '', 'speaker_url': ''});
+                    imgUrl = "img/BuckyBadger.png";
                 }
+
+                const speakerUrl = v[8].trim();
+                var paperUrl = v[7].trim();
+                if (paperUrl.length>0) {
+                    paperUrl = paperUrl.split(";");
+                }
+                gPaperList.push({'speaker': speaker, 'area': areaTag, 'title': title, 'slideUrl': slideUrl, 'imgUrl': imgUrl, 'paperUrl': paperUrl, 'speakerUrl': speakerUrl});
             }
             populatePapers(null, 'title');
-            populateKeynotes();
         }
     };
     xhttp.open("GET", filePath, true);
     xhttp.send();
 }
-function populateKeynotes() {
-    let ulKeynote = document.getElementById('keynote-list');
-    var liKeynote = '';
-    ulKeynote.innerHTML = '';
-    // create html here
-    for (var idx=0; idx<gKeynoteList.length; idx++) {
-        const paper = gKeynoteList[idx];
-    
-        liKeynote += '<li style="margin-bottom:5px; padding-bottom:5px; min-height:96px; border-bottom:1px solid lightgray;"><p style="width:100%;">\
-                <img class="paper-thumbnail" src="img/BuckyBadger.jpg" style="float:left;"></img>\
-                <a href="' + paper["paper_url"] + '"><span style="font-size:1.25em">' + paper["title"] + '</span></a>\
-                <br><a href="'+ paper["speaker_url"] + '">' + paper["speaker"] + '</a></li>';
-    }
-    ulKeynote.innerHTML = liKeynote;
-}
+
 function populatePapers(btn, sortKey) {
     var span = document.getElementById("span-sort-" + sortKey);
     var attr = span.getAttribute('uk-icon');
@@ -108,9 +109,8 @@ function populatePapers(btn, sortKey) {
         }
     }
 
-
-    let ulPaper = document.getElementById('submission-list');
-    ulPaper.innerHTML = '';
+    let olPaper = document.getElementById('submission-list');
+    olPaper.innerHTML = '';
     var liPaper = '';
 
     // sort areas in alphabetical order
@@ -123,24 +123,43 @@ function populatePapers(btn, sortKey) {
     }
 
     // create html here
-    // for (const [area, papers] of Object.entries(paperDict)) {
-    for (var i0=0; i0<indices.length; i0++) {
+    for (var i0=0; i0 < indices.length; i0++) {
         const idx = indices[i0];
-        const paper = gPaperList[idx];
-        const areas = paper['area'].split(',');
-        var areaTag = [];
-        for (var i = 0; i < areas.length; i++) {
-            areaTag.push('#' + areas[i].trim());
+        const data = gPaperList[idx];
+        liPaper += 
+        "<li class='paper-li'><span><div class='paper-container'><div class='paper-left'><img class='paper-thumbnail' src='" + data['imgUrl'] + "'></img></div>" + 
+        "<div class='paper-right'><span style='font-size:1.25em'>" + data['title'] + "</span>";
+    
+        const hasPaperUrl = data['paperUrl'] != null && data['paperUrl'].length > 0;
+        const hasSlideUrl = data['slideUrl'] != null && data['slideUrl'].length > 0;
+        if (hasPaperUrl) {
+            for(var urlIdx=0; urlIdx<data['paperUrl'].length; urlIdx++){
+                if (urlIdx == 0) liPaper += '<br>';
+                if (data['paperUrl'].length > 1) {
+                    liPaper += "<a href='" + data['paperUrl'][urlIdx] + "' target='_blank'>[paper " + (urlIdx+1).toString() + "] </a>";
+                }
+                else {
+                    liPaper += "<a href='" + data['paperUrl'][urlIdx] + "' target='_blank'>[paper]</a>";
+                }
+            }
+            if(!hasSlideUrl) liPaper += "<br>";
         }
-        
-        const img_filename = paper['speaker'].replaceAll(' ', '_');
-        let img_path = "/img/submissions/" + img_filename + ".png";
-        liPaper += '<li style="margin-bottom:5px; padding-bottom:5px; min-height:96px; border-bottom:1px solid lightgray;"><p style="width:100%;">\
-            <img class="paper-thumbnail" src="'+img_path+'" style="float:left;" onerror="this.src=&#39;img/BuckyBadger.jpg&#39;;"></img>\
-            <a href="' + paper["paper_url"] + '"><span style="font-size:1.25em">' + paper["title"] + '</span></a>\
-            <br><a href="'+ paper["speaker_url"] + '">' + paper["speaker"] + '</a>\
-            <br><span>'+areaTag.join(' ')+'</span></p></li>';
-    }
 
-    ulPaper.innerHTML = liPaper;
+        if (hasSlideUrl) {
+            if (!hasPaperUrl) liPaper += "<br>";
+            liPaper += "<a href='" + data['slideUrl'] + "' target='_blank'>[slides]</a><br>";
+        }
+
+        if (!hasPaperUrl && !hasSlideUrl) {
+            liPaper += "<br>";
+        }
+        if (data['speakerUrl'].length > 0) {
+            liPaper += "<span class='speaker'><a href='" + data['speakerUrl'] + "' target='_blank'>" + data['speaker'] + "</a></span><br>";
+        } else {
+            liPaper += "<span class='speaker'>" + data['speaker'] + "</span><br>";
+        }
+
+        liPaper += '<span>' + data['area'] + "</span></div></div></span></li>";
+    }
+    olPaper.innerHTML = liPaper;
 }
