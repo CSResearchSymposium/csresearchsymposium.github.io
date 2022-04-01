@@ -1,24 +1,23 @@
 function updateNavBar(currentNav) {
-    let uls = document.getElementsByClassName("nav-ul")
-    for (let i =0; i < uls.length; i++) {
-        let lis = uls[i].getElementsByTagName("li");
-        for (let j = 0; j < lis.length; j++) {
+    var uls = document.getElementsByClassName("nav-ul")
+    for (var i =0; i < uls.length; i++) {
+        var lis = uls[i].getElementsByTagName("li");
+        for (var j = 0; j < lis.length; j++) {
             lis[j].classList.remove("uk-active");
         }
     }
 
-    let li = document.getElementsByClassName("nav-" + currentNav);
-    for (let i =0; i < li.length; i++) {
+    var li = document.getElementsByClassName("nav-" + currentNav);
+    for (var i =0; i < li.length; i++) {
         li[i].classList.add("uk-active");
     }
 }
 
 // global variable
 var gPaperList = [];
-var gKeynoteList = [];
 function loadSubmissions() {
     // dynamically load submissions from .csv file exported from google sheet
-    parseSubmissions(); // loads to global variables: gPaperList, gKeynoteList
+    parseSubmissions(); // loads to global variables: gPaperList
 
     // to be added after final submissions
 }
