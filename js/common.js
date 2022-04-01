@@ -135,7 +135,7 @@ function populatePapers(btn, sortKey) {
             for(var urlIdx=0; urlIdx<data['paperUrl'].length; urlIdx++){
                 if (urlIdx == 0) liPaper += '<br>';
                 if (data['paperUrl'].length > 1) {
-                    liPaper += "<a href='" + data['paperUrl'][urlIdx] + "' target='_blank'>[paper " + (urlIdx+1).toString() + "] </a>";
+                    liPaper += "<a href='" + data['paperUrl'][urlIdx] + "' target='_blank'>[paper " + (urlIdx+1).toString() + "]</a>";
                 }
                 else {
                     liPaper += "<a href='" + data['paperUrl'][urlIdx] + "' target='_blank'>[paper]</a>";
