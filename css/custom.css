@@ -116,6 +116,20 @@ li span{
 .prize-thumbnail:hover {
   transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+.column {
+  padding-left: 10px;
+  flex: 50%;
+}
+.prize-list {
+  margin-left: -25px;
+}
+/* Clear floats after the columns */
+.row {
+  display: flex;
+}
+.row > :first-child{
+  margin-right: 20px;
+}
 
 /* Text-level semantics
  ========================================================================== */
